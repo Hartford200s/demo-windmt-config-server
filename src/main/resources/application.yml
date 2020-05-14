@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server
+  rabbitmq:
+    host: localhost
+    port: 5672 #spring cloud訪問為5672, web端口訪問為15672
+    username: guest
+    password: guest
+  cloud:    config:      server:        git:          uri: https://github.com/Hartford200s/config-server-properties.git     # 配置git仓库的地址    bus:      enabled: true
+      trace:        enabled: true
+
+
+server:  port: 12000
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/   ## 注册中心eurka地址
+      
+management:  endpoints:    web:      exposure:        include: bus-refresh      
